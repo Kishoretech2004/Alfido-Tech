@@ -4,14 +4,12 @@ def print_board(board):
         print("-" * 9)
 
 def check_winner(board):
-    # Check rows and columns
     for i in range(3):
         if board[i][0] == board[i][1] == board[i][2] != ' ':
             return board[i][0]
         if board[0][i] == board[1][i] == board[2][i] != ' ':
             return board[0][i]
 
-    # Check diagonals
     if board[0][0] == board[1][1] == board[2][2] != ' ':
         return board[0][0]
     if board[0][2] == board[1][1] == board[2][0] != ' ':
@@ -27,20 +25,21 @@ def is_board_full(board):
 
 def tic_tac_toe():
     board = [[' ' for _ in range(3)] for _ in range(3)]
+    players = {'X': 'Player 1', 'O': 'Player 2'}
     current_player = 'X'
 
     while True:
         print_board(board)
 
-        row = int(input(f"Player {current_player}, enter row (0, 1, 2): "))
-        col = int(input(f"Player {current_player}, enter column (0, 1, 2): "))
+        row = int(input(f"{players[current_player]}, enter row (0, 1, 2): "))
+        col = int(input(f"{players[current_player]}, enter column (0, 1, 2): "))
 
         if board[row][col] == ' ':
             board[row][col] = current_player
             winner = check_winner(board)
             if winner:
                 print_board(board)
-                print(f"Player {winner} wins!")
+                print(f"{players[winner]} wins!")
                 break
             elif is_board_full(board):
                 print_board(board)
