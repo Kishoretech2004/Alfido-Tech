@@ -10,9 +10,9 @@ def generator():
     small_alphabets = string.ascii_lowercase
     capital_alphabets = string.ascii_uppercase
     numbers = string.digits
-    special_characters = string.punctuation
+    
 
-    all_characters = small_alphabets + capital_alphabets + numbers + special_characters
+    all_characters = small_alphabets + capital_alphabets + numbers 
     password_length = int(length_Box.get())
 
     if choice.get() == 1:
